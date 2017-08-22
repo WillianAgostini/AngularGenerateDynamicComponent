@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./another-child.component.css']
 })
 export class AnotherChildComponent implements OnInit {
-
+  testes='';
   constructor() { }
 
   ngOnInit() {

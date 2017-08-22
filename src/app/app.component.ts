@@ -15,45 +15,33 @@ import { PapelComponent } from "./papel/papel.component";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = "app works!";
 
   @ViewChild("parent", { read: ViewContainerRef })
   parent: ViewContainerRef;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
-    const childComponent = this.componentFactoryResolver.resolveComponentFactory(
-      ChildComponent
-    );
-    const anotherChildComponent = this.componentFactoryResolver.resolveComponentFactory(
-      AnotherChildComponent
-    );
-    console.log(childComponent);
-    setTimeout(() => {
-      // at this point we want the "child" component to be rendered into the app.component:
-      this.parent.createComponent(childComponent);
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
-      setTimeout(() => {
-        // at this point we want the "another-child" component to be rendered into the app.component:
-        this.parent.createComponent(anotherChildComponent);
-      }, 1000);
-    }, 1000);
+  ngOnInit(): void {
+    setTimeout(() => this.generateComponent(ChildComponent), 1000);
+    setTimeout(() => this.generateComponent(AnotherChildComponent), 3000);
   }
 
   openChild() {
     this.generateComponent(ChildComponent);
   }
+
   openAnotherChild() {
     this.generateComponent(AnotherChildComponent);
-    
   }
+
   openAlgumaCoisa() {
     this.generateComponent(AlgumaCoisaComponent);
-    
   }
+
   openPapel() {
     this.generateComponent(PapelComponent);
-    
   }
 
   generateComponent(component) {
@@ -61,6 +49,9 @@ export class AppComponent {
       component
     );
 
-    this.parent.createComponent(componentResolved);
+    let instance = this.parent.createComponent(componentResolved);
+    instance.instance["testes"] = "valor Injetado";
+
+    setTimeout(() => instance.destroy(), 3000);
   }
 }
