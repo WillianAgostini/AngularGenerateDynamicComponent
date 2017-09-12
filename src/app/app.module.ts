@@ -1,11 +1,13 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule, ComponentFactoryResolver } from "@angular/core";
+import { NgModule, ComponentFactoryResolver, ElementRef } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AppComponent } from "./app.component";
 import { PapelComponent } from "./papel/papel.component";
 import { ChildComponent } from "./child/child.component";
 import { AnotherChildComponent } from "./another-child/another-child.component";
 import { AlgumaCoisaComponent } from "./alguma-coisa/alguma-coisa.component";
+import { TabComponent } from "./tab/tab.component";
+import { TabService } from "./tab/tab.service";
 
 @NgModule({
   declarations: [
@@ -13,10 +15,11 @@ import { AlgumaCoisaComponent } from "./alguma-coisa/alguma-coisa.component";
     ChildComponent,
     AnotherChildComponent,
     PapelComponent,
-    AlgumaCoisaComponent
+    AlgumaCoisaComponent,
+    TabComponent
   ],
   imports: [BrowserModule, CommonModule],
-  providers: [],
+  providers: [TabService],
   entryComponents: [
     AppComponent,
     ChildComponent,
@@ -24,6 +27,6 @@ import { AlgumaCoisaComponent } from "./alguma-coisa/alguma-coisa.component";
     PapelComponent,
     AlgumaCoisaComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [TabComponent]
 })
 export class AppModule {}
