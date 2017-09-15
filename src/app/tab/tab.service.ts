@@ -18,5 +18,6 @@ export class TabService {
 
     let instance = this.tabComponent.parent.createComponent(componentResolved);
     // instance.instance["testes"] = "valor Injetado";
+  return instance;
   }
 }
