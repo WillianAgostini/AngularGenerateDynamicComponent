@@ -34,28 +34,26 @@ export class TabComponent implements OnInit {
     // );
   }
 
+  createTab(component) {
+    let tabModel = new TabModel(this.tabService.generateComponent(component));
+    this.instanceOfComponents.push(tabModel);
+    this.tabClickSelect(tabModel);
+  }
+
   openChild() {
-    this.instanceOfComponents.push(
-      new TabModel(this.tabService.generateComponent(ChildComponent))
-    );
+    this.createTab(ChildComponent);
   }
 
   openAnotherChild() {
-    this.instanceOfComponents.push(
-      new TabModel(this.tabService.generateComponent(AnotherChildComponent))
-    );
+    this.createTab(AnotherChildComponent);
   }
 
   openPapel() {
-    this.instanceOfComponents.push(
-      new TabModel(this.tabService.generateComponent(PapelComponent))
-    );
+    this.createTab(PapelComponent);
   }
 
   openAlgumaCoisa() {
-    this.instanceOfComponents.push(
-      new TabModel(this.tabService.generateComponent(AlgumaCoisaComponent))
-    );
+    this.createTab(AlgumaCoisaComponent);
   }
 
   tabClickRemove(component: TabModel) {
