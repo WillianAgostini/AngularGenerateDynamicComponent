@@ -58,7 +58,7 @@ export class TabComponent implements OnInit {
     );
   }
 
-  tabClick(component: TabModel) {
+  tabClickRemove(component: TabModel) {
     let componentToDestroy = this.instanceOfComponents.find(
       x => x.index === component.index
     );
@@ -66,5 +66,16 @@ export class TabComponent implements OnInit {
     this.instanceOfComponents = this.instanceOfComponents.filter(
       x => x.index !== component.index
     );
+  }
+
+  tabClickSelect(component: TabModel) {
+    this.instanceOfComponents.forEach(x => {
+      x.component.location.nativeElement.setAttribute("hidden", "true");
+    });
+
+    let componentToShow = this.instanceOfComponents.find(
+      x => x.index === component.index
+    );
+    componentToShow.component.location.nativeElement.removeAttribute("hidden");
   }
 }
