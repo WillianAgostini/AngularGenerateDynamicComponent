@@ -8,6 +8,7 @@ import { AnotherChildComponent } from "./another-child/another-child.component";
 import { AlgumaCoisaComponent } from "./alguma-coisa/alguma-coisa.component";
 import { TabComponent } from "./tab/tab.component";
 import { TabService } from "./tab/tab.service";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { TabService } from "./tab/tab.service";
     AlgumaCoisaComponent,
     TabComponent
   ],
-  imports: [BrowserModule, CommonModule],
+  imports: [BrowserModule, CommonModule, NgbModule.forRoot()],
   providers: [TabService],
   entryComponents: [
     AppComponent,
