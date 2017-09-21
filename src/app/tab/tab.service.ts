@@ -3,7 +3,7 @@ import { TabComponent } from "./tab.component";
 
 @Injectable()
 export class TabService {
-  tabComponent: TabComponent;
+  tabComponent;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
@@ -16,7 +16,7 @@ export class TabService {
       component
     );
 
-    let instance = this.tabComponent.parent.createComponent(componentResolved);
+    let instance = this.tabComponent.viewContainer.createComponent(componentResolved);
     // instance.instance["testes"] = "valor Injetado";
   return instance;
   }
