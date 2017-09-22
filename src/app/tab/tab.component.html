@@ -3,6 +3,7 @@
 <div class="row" >
 
     <div class="col col-3">
+        <h5>Gerar componente:</h5>
         <div (click)="openChild()">openChild</div>
         <div (click)="openAnotherChild()">openAnotherChild</div>
         <div (click)="openAlgumaCoisa()">openAlgumaCoisa</div>
@@ -12,8 +13,8 @@
     <div class="col col-9">
 
         <ul class="nav nav-tabs">
-            <li *ngFor="let value of instanceOfComponents" (click)="tabClickSelect(value)" style="margin-left:5px; margin-right: 5px">
-                {{value.component.componentType.name}} <span (click)="tabClickRemove(value)"> X </span>
+            <li class="nav-item" *ngFor="let value of instanceOfComponents" (click)="tabClickSelect(value)" >
+                    <a class="nav-link">  {{value.component.componentType.name}} <span (click)="tabClickRemove(value)"> X </span> </a>
             </li>
         </ul>
         <br>
