@@ -2,10 +2,10 @@ import { ComponentRef } from "@angular/core";
 
 export class TabModel {
   component: ComponentRef<{}>;
-  index = Math.random();
+  id = Math.random();
 
   constructor(component) {
     this.component = component;
-    
+    console.log(component);
   }
 }

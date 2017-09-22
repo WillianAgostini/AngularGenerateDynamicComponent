@@ -20,24 +20,41 @@ import { TabModel } from "./tab.model";
 export class TabComponent implements OnInit {
   @ViewChild("parent", { read: ViewContainerRef })
   parent: ViewContainerRef;
-
+  
   instanceOfComponents = new Array<TabModel>();
+
   constructor(private tabService: TabService) {
     this.tabService.setReference(this);
   }
 
-  ngOnInit() {
-    // this.instanceOfComponents.push(
-    //   new TabModel(
-    //     this.tabService.generateComponent(ChildComponent)
-    //   )
-    // );
-  }
+  ngOnInit() {}
 
   createTab(component) {
     let tabModel = new TabModel(this.tabService.generateComponent(component));
+    tabModel.component.instance["id"] = tabModel.id;
     this.instanceOfComponents.push(tabModel);
     this.tabClickSelect(tabModel);
+  }
+
+  tabClickRemove(component: TabModel) {
+    let componentToDestroy = this.instanceOfComponents.find(
+      x => x.id === component.id
+    );
+    componentToDestroy.component.destroy();
+    this.instanceOfComponents = this.instanceOfComponents.filter(
+      x => x.id !== component.id
+    );
+  }
+
+  tabClickSelect(component: TabModel) {
+    this.instanceOfComponents.forEach(x => {
+      x.component.location.nativeElement.setAttribute("hidden", "true");
+    });
+
+    let componentToShow = this.instanceOfComponents.find(
+      x => x.id === component.id
+    );
+    componentToShow.component.location.nativeElement.removeAttribute("hidden");
   }
 
   openChild() {
@@ -54,26 +71,5 @@ export class TabComponent implements OnInit {
 
   openAlgumaCoisa() {
     this.createTab(AlgumaCoisaComponent);
-  }
-
-  tabClickRemove(component: TabModel) {
-    let componentToDestroy = this.instanceOfComponents.find(
-      x => x.index === component.index
-    );
-    componentToDestroy.component.destroy();
-    this.instanceOfComponents = this.instanceOfComponents.filter(
-      x => x.index !== component.index
-    );
-  }
-
-  tabClickSelect(component: TabModel) {
-    this.instanceOfComponents.forEach(x => {
-      x.component.location.nativeElement.setAttribute("hidden", "true");
-    });
-
-    let componentToShow = this.instanceOfComponents.find(
-      x => x.index === component.index
-    );
-    componentToShow.component.location.nativeElement.removeAttribute("hidden");
   }
 }
