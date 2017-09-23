@@ -27,7 +27,9 @@ export class TabComponent implements OnInit {
     this.tabService.setReference(this);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.openChild();
+  }
 
   createTab(component) {
     let tabModel = new TabModel(this.tabService.generateComponent(component));
