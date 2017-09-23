@@ -1,14 +1,18 @@
-<div class="container">
-<div class="row">
-  <div class="col col-xl-2 col-lg-2  sm-md-auto btn-group-vertical rounded">
-    <h5>Gerar Componente:</h5>
-    <button type="button" class="btn btn-secondary" (click)="openStudent()">Aluno</button>
-    <button type="button" class="btn btn-secondary" (click)="openTeacher()">Professor</button>
-  </div>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="#">Tab Component</a>
+</nav>
 
-  <div class="col col-xl-10  col-lg-10  sm-md-auto">
+<div class="row">
+
+  <div class="col-12 col-md-9">
     <app-tab></app-tab>
   </div>
 
-</div>
+  <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+    <div class="list-group">
+      <a href="#" class="list-group-item list-group-item-action list-group-item-primary" (click)="openTeacher()">Professor</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-primary" (click)="openStudent()">Aluno</a>
+    </div>
+  </div>
+
 </div>

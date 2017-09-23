@@ -1,6 +1,5 @@
-<h2> Tab Component </h2>
-
 <div class="card text-center">
+
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item" *ngFor="let value of instanceOfComponents" (click)="tabClickSelect(value)">
@@ -8,7 +7,9 @@
             </li>
         </ul>
     </div>
+
     <div class="card-body">
         <div #parent></div>
     </div>
+
 </div>

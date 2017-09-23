@@ -25,19 +25,7 @@ export class TabComponent implements OnInit {
     this.tabService.setReference(this);
   }
 
-  ngOnInit() {
-    this.openTeacher();
-  }
-
-  createTab(component, tabName) {
-    let tabModel = new TabModel(
-      this.tabService.generateComponent(component),
-      tabName
-    );
-    tabModel.component.instance["_id"] = tabModel.id;
-    this.instanceOfComponents.push(tabModel);
-    this.tabClickSelect(tabModel);
-  }
+  ngOnInit() {}
 
   tabClickRemove(component: TabModel) {
     let componentToDestroy = this.instanceOfComponents.find(
@@ -65,13 +53,5 @@ export class TabComponent implements OnInit {
     if (component.location.nativeElement.getAttribute("hidden"))
       return className;
     return className + " active";
-  }
-
-  openStudent() {
-    this.createTab(StudentComponent, "Aluno");
-  }
-
-  openTeacher() {
-    this.createTab(TeacherComponent, "Professor");
   }
 }
