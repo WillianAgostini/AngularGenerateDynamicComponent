@@ -12,7 +12,7 @@
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item" *ngFor="let value of instanceOfComponents" (click)="tabClickSelect(value)">
-                    <a [ngClass]="setMyClass(value.component)">  {{value.component.componentType.name}} <span (click)="tabClickRemove(value)"> X </span> </a>
+                    <a [ngClass]="setMyClass(value.component)">  {{value.tabName}} <span (click)="tabClickRemove(value)"> X </span> </a>
                 </li>
             </ul>
         </div>

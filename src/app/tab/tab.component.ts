@@ -29,8 +29,11 @@ export class TabComponent implements OnInit {
     this.openTeacher();
   }
 
-  createTab(component) {
-    let tabModel = new TabModel(this.tabService.generateComponent(component));
+  createTab(component, tabName) {
+    let tabModel = new TabModel(
+      this.tabService.generateComponent(component),
+      tabName
+    );
     tabModel.component.instance["_id"] = tabModel.id;
     this.instanceOfComponents.push(tabModel);
     this.tabClickSelect(tabModel);
@@ -65,10 +68,10 @@ export class TabComponent implements OnInit {
   }
 
   openStudent() {
-    this.createTab(StudentComponent);
+    this.createTab(StudentComponent, "Aluno");
   }
 
   openTeacher() {
-    this.createTab(TeacherComponent);
+    this.createTab(TeacherComponent, "Professor");
   }
 }
