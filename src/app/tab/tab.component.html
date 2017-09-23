@@ -2,15 +2,15 @@
 
 <div class="row" >
 
-    <div class="col col-3">
+    <div class="col col-2 btn-group-vertical">
         <h5>Gerar componente:</h5>
-        <div (click)="openChild()">openChild</div>
-        <div (click)="openAnotherChild()">openAnotherChild</div>
-        <div (click)="openAlgumaCoisa()">openAlgumaCoisa</div>
-        <div (click)="openPapel()">openPapel</div>
+        <button type="button" class="btn btn-secondary" (click)="openChild()">openChild</button>
+        <button type="button"class="btn btn-secondary"  (click)="openAnotherChild()">openAnotherChild</button>
+        <button type="button" class="btn btn-secondary " (click)="openAlgumaCoisa()">openAlgumaCoisa</button>
+        <button type="button"class="btn btn-secondary "(click)="openPapel()">openPapel</button>
     </div>
 
-    <div class="col col-9">
+    <div class="col col-10">
 
         <ul class="nav nav-tabs">
             <li class="nav-item" *ngFor="let value of instanceOfComponents" (click)="tabClickSelect(value)" >
