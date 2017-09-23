@@ -6,11 +6,9 @@ import {
   ComponentRef
 } from "@angular/core";
 import { TabService } from "./tab.service";
-import { ChildComponent } from "../child/child.component";
-import { AnotherChildComponent } from "../another-child/another-child.component";
-import { PapelComponent } from "../papel/papel.component";
-import { AlgumaCoisaComponent } from "../alguma-coisa/alguma-coisa.component";
 import { TabModel } from "./tab.model";
+import { TeacherComponent } from "../teacher/teacher.component";
+import { StudentComponent } from "../student/student.component";
 
 @Component({
   selector: "app-tab",
@@ -28,12 +26,12 @@ export class TabComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.openChild();
+    this.openTeacher();
   }
 
   createTab(component) {
     let tabModel = new TabModel(this.tabService.generateComponent(component));
-    tabModel.component.instance["id"] = tabModel.id;
+    tabModel.component.instance["_id"] = tabModel.id;
     this.instanceOfComponents.push(tabModel);
     this.tabClickSelect(tabModel);
   }
@@ -63,22 +61,14 @@ export class TabComponent implements OnInit {
     let className = "nav-link";
     if (component.location.nativeElement.getAttribute("hidden"))
       return className;
-    return className + ' active';
+    return className + " active";
   }
 
-  openChild() {
-    this.createTab(ChildComponent);
+  openStudent() {
+    this.createTab(StudentComponent);
   }
 
-  openAnotherChild() {
-    this.createTab(AnotherChildComponent);
-  }
-
-  openPapel() {
-    this.createTab(PapelComponent);
-  }
-
-  openAlgumaCoisa() {
-    this.createTab(AlgumaCoisaComponent);
+  openTeacher() {
+    this.createTab(TeacherComponent);
   }
 }
