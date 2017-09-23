@@ -6,6 +6,5 @@ export class TabModel {
 
   constructor(component) {
     this.component = component;
-    console.log(component);
   }
 }

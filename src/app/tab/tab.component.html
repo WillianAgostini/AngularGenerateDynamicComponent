@@ -14,7 +14,7 @@
 
         <ul class="nav nav-tabs">
             <li class="nav-item" *ngFor="let value of instanceOfComponents" (click)="tabClickSelect(value)" >
-                    <a class="nav-link">  {{value.component.componentType.name}} <span (click)="tabClickRemove(value)"> X </span> </a>
+                    <a [ngClass]="setMyClass(value.component)">  {{value.component.componentType.name}} <span (click)="tabClickRemove(value)"> X </span> </a>
             </li>
         </ul>
         <br>

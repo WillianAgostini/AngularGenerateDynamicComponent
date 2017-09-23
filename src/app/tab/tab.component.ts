@@ -20,7 +20,7 @@ import { TabModel } from "./tab.model";
 export class TabComponent implements OnInit {
   @ViewChild("parent", { read: ViewContainerRef })
   parent: ViewContainerRef;
-  
+
   instanceOfComponents = new Array<TabModel>();
 
   constructor(private tabService: TabService) {
@@ -55,6 +55,13 @@ export class TabComponent implements OnInit {
       x => x.id === component.id
     );
     componentToShow.component.location.nativeElement.removeAttribute("hidden");
+  }
+
+  setMyClass(component: ComponentRef<{}>) {
+    let className = "nav-link";
+    if (component.location.nativeElement.getAttribute("hidden"))
+      return className;
+    return className + ' active';
   }
 
   openChild() {
